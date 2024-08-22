@@ -116,7 +116,8 @@ class FastNetworkModule(reactContext: ReactApplicationContext) :
     }
 
     private fun ReadableMap.toJsonRequestBody(): RequestBody {
-        val jsonString = JSONObject(this.toHashMap()).toString()
+        val map = this.toHashMap() as Map<*, *>
+        val jsonString = JSONObject(map).toString()
         return jsonString.toRequestBody("application/json; charset=utf-8".toMediaTypeOrNull())
     }
 
